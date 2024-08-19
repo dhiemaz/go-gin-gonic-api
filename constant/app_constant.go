@@ -12,3 +12,7 @@ const (
 	InvalidRequest
 	Unauthorized
 )
+
+func (r ResponseStatus) GetResponseStatus() string {
+	return [...]string{"SUCCESS", "DATA_NOT_FOUND", "UNKNOWN_ERROR", "INVALID_REQUEST", "UNAUTHORIZED"}[r-1]
+}
