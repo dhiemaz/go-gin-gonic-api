@@ -9,3 +9,7 @@ type UserService interface {
 	UpdateUserData(c *gin.Context)
 	DeleteUser(c *gin.Context)
 }
+
+type UserServiceImpl struct {
+	userRepository repository.UserRepository
+}
