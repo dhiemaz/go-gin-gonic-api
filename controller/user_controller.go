@@ -16,3 +16,7 @@ type UserController interface {
 type UserControllerImpl struct {
 	svc service.UserService
 }
+
+func (u UserControllerImpl) GetAllUserData(c *gin.Context) {
+	u.svc.GetAllUser(c)
+}
