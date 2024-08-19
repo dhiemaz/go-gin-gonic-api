@@ -54,3 +54,12 @@ func (u UserRepositoryImpl) UpdateUserById() {
 	//TODO implement me
 	panic("implement me")
 }
+
+func (u UserRepositoryImpl) DeleteUserById(id int) error {
+	err := u.db.Delete(&dao.User{}, id).Error
+	if err != nil {
+		log.Error("Got an error when delete user. Error: ", err)
+		return err
+	}
+	return nil
+}
