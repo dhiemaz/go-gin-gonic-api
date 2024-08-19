@@ -13,3 +13,7 @@ var userRepoSet = wire.NewSet(repository.UserRepositoryInit,
 var userCtrlSet = wire.NewSet(controller.UserControllerInit,
 	wire.Bind(new(controller.UserController), new(*controller.UserControllerImpl)),
 )
+
+var roleRepoSet = wire.NewSet(repository.RoleRepositoryInit,
+	wire.Bind(new(repository.RoleRepository), new(*repository.RoleRepositoryImpl)),
+)
