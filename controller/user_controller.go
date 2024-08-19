@@ -32,3 +32,7 @@ func (u UserControllerImpl) GetUserById(c *gin.Context) {
 func (u UserControllerImpl) UpdateUserData(c *gin.Context) {
 	u.svc.UpdateUserData(c)
 }
+
+func (u UserControllerImpl) DeleteUser(c *gin.Context) {
+	u.svc.DeleteUser(c)
+}
