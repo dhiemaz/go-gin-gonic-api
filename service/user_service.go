@@ -105,3 +105,18 @@ func (u UserServiceImpl) GetAllUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
 }
+
+func (u UserServiceImpl) DeleteUser(c *gin.Context) {
+	defer pkg.PanicHandler(c)
+
+	log.Info("start to execute delete data user by id")
+	userID, _ := strconv.Atoi(c.Param("userID"))
+
+	err := u.userRepository.DeleteUserById(userID)
+	if err != nil {
+		log.Error("Happened Error when try delete data user from DB. Error:", err)
+		pkg.PanicException(constant.UnknownError)
+	}
+
+	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, pkg.Null()))
+}
