@@ -91,3 +91,17 @@ func (u UserServiceImpl) AddUserData(c *gin.Context) {
 
 	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
 }
+
+func (u UserServiceImpl) GetAllUser(c *gin.Context) {
+	defer pkg.PanicHandler(c)
+
+	log.Info("start to execute get all data user")
+
+	data, err := u.userRepository.FindAllUser()
+	if err != nil {
+		log.Error("Happened Error when find all user data. Error: ", err)
+		pkg.PanicException(constant.UnknownError)
+	}
+
+	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
+}
