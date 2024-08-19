@@ -63,3 +63,10 @@ func (u UserRepositoryImpl) DeleteUserById(id int) error {
 	}
 	return nil
 }
+
+func UserRepositoryInit(db *gorm.DB) *UserRepositoryImpl {
+	//db.AutoMigrate(&dao.User{})
+	return &UserRepositoryImpl{
+		db: db,
+	}
+}
