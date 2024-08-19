@@ -24,3 +24,7 @@ func (u UserControllerImpl) GetAllUserData(c *gin.Context) {
 func (u UserControllerImpl) AddUserData(c *gin.Context) {
 	u.svc.AddUserData(c)
 }
+
+func (u UserControllerImpl) GetUserById(c *gin.Context) {
+	u.svc.GetUserById(c)
+}
