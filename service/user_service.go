@@ -53,3 +53,18 @@ func (u UserServiceImpl) UpdateUserData(c *gin.Context) {
 
 	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
 }
+
+func (u UserServiceImpl) GetUserById(c *gin.Context) {
+	defer pkg.PanicHandler(c)
+
+	log.Info("start to execute program get user by id")
+	userID, _ := strconv.Atoi(c.Param("userID"))
+
+	data, err := u.userRepository.FindUserById(userID)
+	if err != nil {
+		log.Error("Happened error when get data from database. Error", err)
+		pkg.PanicException(constant.DataNotFound)
+	}
+
+	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
+}
