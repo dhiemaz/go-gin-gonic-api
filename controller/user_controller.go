@@ -36,3 +36,9 @@ func (u UserControllerImpl) UpdateUserData(c *gin.Context) {
 func (u UserControllerImpl) DeleteUser(c *gin.Context) {
 	u.svc.DeleteUser(c)
 }
+
+func UserControllerInit(userService service.UserService) *UserControllerImpl {
+	return &UserControllerImpl{
+		svc: userService,
+	}
+}
