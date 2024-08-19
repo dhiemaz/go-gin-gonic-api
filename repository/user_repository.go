@@ -40,3 +40,12 @@ func (u UserRepositoryImpl) FindUserById(id int) (dao.User, error) {
 	}
 	return user, nil
 }
+
+func (u UserRepositoryImpl) Save(user *dao.User) (dao.User, error) {
+	var err = u.db.Save(user).Error
+	if err != nil {
+		log.Error("Got an error when save user. Error: ", err)
+		return dao.User{}, err
+	}
+	return *user, nil
+}
