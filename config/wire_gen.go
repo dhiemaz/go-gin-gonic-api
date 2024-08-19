@@ -11,3 +11,9 @@ func Init() *Initialization {
 	initialization := NewInitialization(userRepositoryImpl, userServiceImpl, userControllerImpl, roleRepositoryImpl)
 	return initialization
 }
+
+// injector.go:
+
+var db = wire.NewSet(ConnectToDB)
+
+var userServiceSet = wire.NewSet(service.UserServiceInit, wire.Bind(new(service.UserService), new(*service.UserServiceImpl)))
