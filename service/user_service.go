@@ -6,6 +6,7 @@ import (
 	"go-gin-gonic-api/constant"
 	"go-gin-gonic-api/domain/dao"
 	"go-gin-gonic-api/pkg"
+	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"strconv"
 )
@@ -64,6 +65,28 @@ func (u UserServiceImpl) GetUserById(c *gin.Context) {
 	if err != nil {
 		log.Error("Happened error when get data from database. Error", err)
 		pkg.PanicException(constant.DataNotFound)
+	}
+
+	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
+}
+
+func (u UserServiceImpl) AddUserData(c *gin.Context) {
+	defer pkg.PanicHandler(c)
+
+	log.Info("start to execute program add data user")
+	var request dao.User
+	if err := c.ShouldBindJSON(&request); err != nil {
+		log.Error("Happened error when mapping request from FE. Error", err)
+		pkg.PanicException(constant.InvalidRequest)
+	}
+
+	hash, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 15)
+	request.Password = string(hash)
+
+	data, err := u.userRepository.Save(&request)
+	if err != nil {
+		log.Error("Happened error when saving data to database. Error", err)
+		pkg.PanicException(constant.UnknownError)
 	}
 
 	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
