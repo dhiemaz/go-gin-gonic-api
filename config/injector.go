@@ -9,3 +9,7 @@ var userServiceSet = wire.NewSet(service.UserServiceInit,
 var userRepoSet = wire.NewSet(repository.UserRepositoryInit,
 	wire.Bind(new(repository.UserRepository), new(*repository.UserRepositoryImpl)),
 )
+
+var userCtrlSet = wire.NewSet(controller.UserControllerInit,
+	wire.Bind(new(controller.UserController), new(*controller.UserControllerImpl)),
+)
