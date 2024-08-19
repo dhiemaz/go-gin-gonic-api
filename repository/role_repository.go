@@ -9,3 +9,7 @@ type RoleRepository interface {
 type RoleRepositoryImpl struct {
 	db *gorm.DB
 }
+
+func (r RoleRepositoryImpl) FindAllRole() {
+	panic("implement me")
+}
