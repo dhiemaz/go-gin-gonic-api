@@ -6,3 +6,15 @@ type Initialization struct {
 	UserCtrl controller.UserController
 	RoleRepo repository.RoleRepository
 }
+
+func NewInitialization(userRepo repository.UserRepository,
+	userService service.UserService,
+	userCtrl controller.UserController,
+	roleRepo repository.RoleRepository) *Initialization {
+	return &Initialization{
+		userRepo: userRepo,
+		userSvc:  userService,
+		UserCtrl: userCtrl,
+		RoleRepo: roleRepo,
+	}
+}
