@@ -17,3 +17,8 @@ var userCtrlSet = wire.NewSet(controller.UserControllerInit,
 var roleRepoSet = wire.NewSet(repository.RoleRepositoryInit,
 	wire.Bind(new(repository.RoleRepository), new(*repository.RoleRepositoryImpl)),
 )
+
+func Init() *Initialization {
+	wire.Build(NewInitialization, db, userCtrlSet, userServiceSet, userRepoSet, roleRepoSet)
+	return nil
+}
