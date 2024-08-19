@@ -3,6 +3,7 @@ package pkg
 import (
 	"errors"
 	"fmt"
+	"go-gin-gonic-api/constant"
 )
 
 func PanicException_(key string, message string) {
@@ -11,4 +12,8 @@ func PanicException_(key string, message string) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func PanicException(responseKey constant.ResponseStatus) {
+	PanicException_(responseKey.GetResponseStatus(), responseKey.GetResponseMessage())
 }
