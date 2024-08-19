@@ -49,3 +49,8 @@ func (u UserRepositoryImpl) Save(user *dao.User) (dao.User, error) {
 	}
 	return *user, nil
 }
+
+func (u UserRepositoryImpl) UpdateUserById() {
+	//TODO implement me
+	panic("implement me")
+}
