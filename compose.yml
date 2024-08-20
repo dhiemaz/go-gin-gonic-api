@@ -1,0 +1,38 @@
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:17beta3-alpine3.20
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:yuji}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:S3cret}
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:8.10
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:gadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:S3cret}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    ports:
+      - "9080:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
