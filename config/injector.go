@@ -1,3 +1,7 @@
+// go:build wireinject
+//go:build wireinject
+// +build wireinject
+
 package config
 
 import (
