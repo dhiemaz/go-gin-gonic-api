@@ -38,3 +38,32 @@ Body response:
   ]
 }
 ```
+
+#### create data user
+
+```shell
+curl --location --request POST 'http://localhost:8080/api/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Itadori Yuji",
+    "email": "yuji@yopmail.com",
+    "password": "S3cret",
+    "role_id": 1
+}'
+```
+
+Then the response should be like this
+
+```json
+{
+  "response_key": "SUCCESS",
+  "response_message": "Success",
+  "data": {
+    "id": 8,
+    "name": "Itadori Yuji",
+    "email": "yuji@yopmail.com",
+    "status": 0,
+    "role_id": 1
+  }
+}
+```
