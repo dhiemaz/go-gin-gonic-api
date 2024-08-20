@@ -1,5 +1,11 @@
 package config
 
+import (
+	"go-gin-gonic-api/controller"
+	"go-gin-gonic-api/repository"
+	"go-gin-gonic-api/service"
+)
+
 type Initialization struct {
 	userRepo repository.UserRepository
 	userSvc  service.UserService

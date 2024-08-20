@@ -6,6 +6,7 @@ import (
 	"go-gin-gonic-api/constant"
 	"go-gin-gonic-api/domain/dao"
 	"go-gin-gonic-api/pkg"
+	"go-gin-gonic-api/repository"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"strconv"

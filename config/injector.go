@@ -1,5 +1,12 @@
 package config
 
+import (
+	"github.com/google/wire"
+	"go-gin-gonic-api/controller"
+	"go-gin-gonic-api/repository"
+	"go-gin-gonic-api/service"
+)
+
 var db = wire.NewSet(ConnectToDB)
 
 var userServiceSet = wire.NewSet(service.UserServiceInit,
