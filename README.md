@@ -5,7 +5,7 @@
 #### Get all data users
 
 ```shell
-curl --location --request GET 'http://localhost:8080/api/user'
+curl --location --request GET 'http://localhost:8080/api/users' | jq .
 ```
 
 Body response:
