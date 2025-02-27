@@ -42,14 +42,15 @@ Body response:
 #### create data user
 
 ```shell
-curl --location --request POST 'http://localhost:8080/api/user' \
+curl --location --request POST 'http://localhost:8080/api/users' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "Itadori Yuji",
     "email": "yuji@yopmail.com",
     "password": "S3cret",
-    "role_id": 1
-}'
+    "role_id": 1,
+    "status": 1
+}' | jq .
 ```
 
 Then the response should be like this
