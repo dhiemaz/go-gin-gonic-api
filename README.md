@@ -48,7 +48,10 @@ curl --location --request POST 'http://localhost:8080/api/users' \
     "name": "Itadori Yuji",
     "email": "yuji@yopmail.com",
     "password": "S3cret",
-    "role_id": 1,
+    "role": {
+        "id":1,
+        "role":"admin"
+    },
     "status": 1
 }' | jq .
 ```
